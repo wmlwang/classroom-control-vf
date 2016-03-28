@@ -60,7 +60,7 @@ node default {
     ensure => 'present',
     name => 'testing.puppetlabs.vm',
     ip => '127.0.0.1',
-    comment => "Managed hosts\n",
+    comment => "Managed hosts",
     target => '/etc/hosts',
   }
 }
