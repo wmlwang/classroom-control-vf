@@ -1,4 +1,5 @@
 # `classroom-control-vf`
+[![Build Status](https://travis-ci.org/wmlwang/classroom-control-vf.svg?branch=master)](https://travis-ci.org/wmlwang/classroom-control-vf)
 
 This is the classroom control repository for the Virtual Fundamentals class.
 
