@@ -64,7 +64,5 @@ node default {
     target => '/etc/hosts',
   }
 
-  node 'users' {
-    include users
-  }
+  sssssinclude users
 }
