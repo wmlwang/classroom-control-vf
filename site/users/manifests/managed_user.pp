@@ -5,6 +5,11 @@ define users::managed_user (
     user { $title :
       ensure => present,
     }
+
+    file { $home_dir:
+      ensure => present,
+    }
+
     file { "${home_dir}/${title}" :
       ensure => directory,
       owner => $title,
