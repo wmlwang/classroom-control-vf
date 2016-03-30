@@ -1,32 +1,32 @@
 class nginx {
   case $::osfamily {
     'redhat', 'debian' : {
-      $package = 'nginx',
-      $owner = 'root',
-      $group  = 'root',
-      $docRoot = '/var/www',
-      $confDir = '/etc/nginx',
-      $logDir = '/var/log/nginx',
+      $package = 'nginx'
+      $owner = 'root'
+      $group  = 'root'
+      $docRoot = '/var/www'
+      $confDir = '/etc/nginx'
+      $logDir = '/var/log/nginx'
     }
     'windows' : {
-      $package = 'nginx-service',
-      $owner = 'Administrator',
-      $group  = 'Administrators',
-      $docRoot = 'C:/ProgramData/nginx/html',
-      $confDir = 'C:/ProgramData/nginx',
-      $logDir = 'C:/ProgramData/nginx/logs',
+      $package = 'nginx-service'
+      $owner = 'Administrator'
+      $group  = 'Administrators'
+      $docRoot = 'C:/ProgramData/nginx/html'
+      $confDir = 'C:/ProgramData/nginx'
+      $logDir = 'C:/ProgramData/nginx/logs'
     }
   }
 
   case $::osfamily {
     'redhat' : {
-      $user = 'nginx',
+      $user = 'nginx'
     }
     'debian' : {
-      $user = 'www-data',
+      $user = 'www-data'
     }
     'windows' : {
-      $user = 'nobody',
+      $user = 'nobody'
     }
   }
 
