@@ -73,5 +73,4 @@ node default {
     notify { "${capitalize($::virtual)}": }
   }
 
-  include aliases
 }
