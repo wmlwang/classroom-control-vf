@@ -1,5 +1,5 @@
 class aliases (
-    $admin = 'fundamentals',
+    $admin = 'william.m.wang@intel.com',
 ) {
     # uses $admin to build the aliases file
     file { '/etc/aliases':
