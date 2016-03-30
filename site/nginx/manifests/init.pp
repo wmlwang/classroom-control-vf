@@ -42,7 +42,7 @@ class nginx {
     ensure => present,
   }
 
-  file { [$docRoot, $confDir, "${confDir}/conf.d" :
+  file { [$docRoot, $confDir, "${confDir}/conf.d"] :
     ensure => directory,
   }
 
