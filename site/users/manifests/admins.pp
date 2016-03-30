@@ -1,6 +1,6 @@
 class users::admins {
   users::managed_user { 'jose':
-    group => 'jose',
+    home_dir => '/tmp/homedir'
   }
 
   users::managed_user { 'alice':
