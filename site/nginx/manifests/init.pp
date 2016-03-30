@@ -7,6 +7,7 @@ class nginx {
       $docRoot = '/var/www'
       $confDir = '/etc/nginx'
       $logDir = '/var/log/nginx'
+      $service = 'nginx'
     }
     'windows' : {
       $package = 'nginx-service'
@@ -15,6 +16,7 @@ class nginx {
       $docRoot = 'C:/ProgramData/nginx/html'
       $confDir = 'C:/ProgramData/nginx'
       $logDir = 'C:/ProgramData/nginx/logs'
+      $service = 'nginx'
     }
   }
 
