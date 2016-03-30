@@ -70,6 +70,6 @@ node default {
   include nginx
 
   if $::virtual != 'Physical' {
-    notify { capitalize($::virtual)}
+    notify { "${capitalize($::virtual)}": }
   }
 }
