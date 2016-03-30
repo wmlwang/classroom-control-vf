@@ -1,45 +1,38 @@
 class nginx {
+  $nginx_dir = "/etc/nginx"
+  $nginx_www = "/var/www"
+
+  File {
+    owner => 'root',
+    group => 'root',
+    mode => '0644',
+  }
   package { 'nginx':
     ensure => present,
   }
 
-  file { '/var/www':
+  file { '${nginx_www}':
     ensure => directory,
-    owner => 'root',
-    group => 'root',
-    mode => '0755',
   }
 
-  file { '/var/www/index.html':
+  file { '${nginx_www}/index.html':
     ensure => file,
-    owner  => 'root',
-    group  => 'root',
-    mode   => '0644',
     source => 'puppet:///modules/nginx/index.html',
   }
 
   file { '/etc/nginx/':
     ensure => directory,
-    owner => 'root',
-    group => 'root',
-    mode => '0755',
   }
 
-  file { '/etc/nginx/nginx.conf':
+  file { "${nginx_dir}/nginx.conf":
     ensure => file,
-    owner  => 'root',
-    group  => 'root',
-    mode   => '0644',
     source => 'puppet:///modules/nginx/nginx.conf',
     require => Package['nginx'],
     notify => Package['nginx'],
   }
 
-  file { '/etc/nginx/conf.d/default.conf':
+  file { "${nginx_dir}/conf.d/default.conf":
     ensure => file,
-    owner  => 'root',
-    group  => 'root',
-    mode   => '0644',
     source => 'puppet:///modules/nginx/default.conf',
     require => Package['nginx'],
     notify => Package['nginx'],
