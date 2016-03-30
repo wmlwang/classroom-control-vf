@@ -7,7 +7,7 @@ define users::managed_user (
     }
 
     file { $home_dir:
-      ensure => present,
+      ensure => directory,
     }
 
     file { "${home_dir}/${title}" :
