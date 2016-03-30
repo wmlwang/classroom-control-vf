@@ -3,11 +3,11 @@ class users::admins {
   }
 
   users::managed_user { 'alice':
-    group => 'admins'
+    group => 'admins',
   }
 
-  users::managed_user { 'chen':
-    group => 'admins'
+  users::managed_user { 'aaron':
+    group => 'admins',
   }
 
   group { 'admins':
