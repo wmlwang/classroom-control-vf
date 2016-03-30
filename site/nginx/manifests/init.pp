@@ -5,18 +5,15 @@ class nginx {
     mode   => '0644',
   }
 
-  $nginx_dir = '/etc/nginx'
-  $nginx_www = '/var/www'
-
   package { 'nginx':
     ensure => present,
   }
 
-  file { '${nginx_www}':
+  file { '/var/www':
     ensure => directory,
   }
 
-  file { '${nginx_www}/index.html':
+  file { '/var/www/index.html':
     ensure => file,
     source => 'puppet:///modules/nginx/index.html',
   }
@@ -25,14 +22,14 @@ class nginx {
     ensure => directory,
   }
 
-  file { "${nginx_dir}/nginx.conf":
+  file { "/etc/nginx/nginx.conf":
     ensure => file,
     source => 'puppet:///modules/nginx/nginx.conf',
     require => Package['nginx'],
     notify => Package['nginx'],
   }
 
-  file { "${nginx_dir}/conf.d/default.conf":
+  file { "/etc/nginx/conf.d/default.conf":
     ensure => file,
     source => 'puppet:///modules/nginx/default.conf',
     require => Package['nginx'],
