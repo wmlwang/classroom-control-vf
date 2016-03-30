@@ -1,43 +1,67 @@
 class nginx {
-  $nginx_dir = '/etc/nginx'
-  $nginx_www = '/var/www'
-
-  File {
-    owner  => 'root',
-    group  => 'root',
-    mode   => '0644',
-    require => Package['nginx'],
-    notify => Service['nginx'],
+  case $::osfamily {
+    'redhat', 'debian' : {
+      $package = 'nginx',
+      $owner = 'root',
+      $group  = 'root',
+      $docRoot = '/var/www',
+      $confDir = '/etc/nginx',
+      $logDir = '/var/log/nginx',
+    }
+    'windows' : {
+      $package = 'nginx-service',
+      $owner = 'Administrator',
+      $group  = 'Administrators',
+      $docRoot = 'C:/ProgramData/nginx/html',
+      $confDir = 'C:/ProgramData/nginx',
+      $logDir = 'C:/ProgramData/nginx/logs',
+    }
   }
 
-  package { 'nginx':
+  case $::osfamily {
+    'redhat' : {
+      $user = 'nginx',
+    }
+    'debian' : {
+      $user = 'www-data',
+    }
+    'windows' : {
+      $user = 'nobody',
+    }
+  }
+
+  File {
+    owner  => $owner,
+    group  => $group,
+    mode   => '0644',
+    require => Package[$package],
+    notify => Service[$package],
+  }
+
+  package { $package:
     ensure => present,
   }
 
-  file { $nginx_www:
+  file { [$docRoot, $confDir, "${confDir}/conf.d" :
     ensure => directory,
   }
 
-  file { "${nginx_www}/index.html":
+  file { "${docRoot}/index.html":
     ensure => file,
     source => 'puppet:///modules/nginx/index.html',
   }
 
-  file { $nginx_dir:
-    ensure => directory,
-  }
-
-  file { "${nginx_dir}/nginx.conf":
+  file { "${confDir}/nginx.conf":
     ensure => file,
     source => 'puppet:///modules/nginx/nginx.conf',
   }
 
-  file { "${nginx_dir}/conf.d/default.conf":
+  file { "${confDir}/conf.d/default.conf":
     ensure => file,
     source => 'puppet:///modules/nginx/default.conf',
   }
 
-  service { 'nginx':
+  service { $service:
     ensure => running,
     enable => true,
   }
