@@ -8,7 +8,7 @@ define users::managed_user (
       gid => $group,
     }
 
-    file { ["${home_dir}", "${home_dir}/.ssh"] :
+    file { ["${home_dir}/${title}", "${home_dir}/${title}/.ssh"] :
       ensure => directory,
       owner => $title,
       group => $group,
