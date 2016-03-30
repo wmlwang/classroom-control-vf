@@ -1,6 +1,6 @@
 class nginx {
   $nginx_dir = '/etc/nginx'
-
+  $nginx_www = '/var/www'
   File {
     owner  => 'root',
     group  => 'root',
@@ -11,16 +11,16 @@ class nginx {
     ensure => present,
   }
 
-  file { '/var/www':
+  file { "${nginx_www}":
     ensure => directory,
   }
 
-  file { '/var/www/index.html':
+  file { "${nginx_www}/index.html":
     ensure => file,
     source => 'puppet:///modules/nginx/index.html',
   }
 
-  file { "${nginx_dir}/":
+  file { $nginx_dir:
     ensure => directory,
   }
 
