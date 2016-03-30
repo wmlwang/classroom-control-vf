@@ -1,12 +1,12 @@
 class nginx {
-  $nginx_dir = "/etc/nginx",
-  $nginx_www = "/var/www",
-
   File {
-    owner => 'root',
-    group => 'root',
-    mode => '0644',
+    owner  => 'root',
+    group  => 'root',
+    mode   => '0644',
   }
+
+  $nginx_dir = '/etc/nginx'
+  $nginx_www = '/var/www'
 
   package { 'nginx':
     ensure => present,
