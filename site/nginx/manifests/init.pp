@@ -56,11 +56,13 @@ class nginx {
   file { "${confDir}/nginx.conf":
     ensure => file,
     content => template('nginx/nginx.conf.erb'),
+    notify => Service[$service],
   }
 
   file { "${confDir}/conf.d/default.conf":
     ensure => file,
     content => template('nginx/default.conf.erb'),
+    notify => Service[$service],
   }
 
   service { $service:
