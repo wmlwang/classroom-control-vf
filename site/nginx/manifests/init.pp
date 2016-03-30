@@ -55,12 +55,12 @@ class nginx {
 
   file { "${confDir}/nginx.conf":
     ensure => file,
-    source => 'puppet:///modules/nginx/nginx.conf',
+    source => template('nginx/nginx.conf.erb'),
   }
 
   file { "${confDir}/conf.d/default.conf":
     ensure => file,
-    source => 'puppet:///modules/nginx/default.conf',
+    source => template('nginx/default.conf.erb'),
   }
 
   service { $service:
