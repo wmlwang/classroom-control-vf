@@ -1,4 +1,6 @@
 class nginx {
+  $nginx_dir = '/etc/nginx'
+
   File {
     owner  => 'root',
     group  => 'root',
@@ -18,18 +20,18 @@ class nginx {
     source => 'puppet:///modules/nginx/index.html',
   }
 
-  file { '/etc/nginx/':
+  file { "${nginx_dir}/":
     ensure => directory,
   }
 
-  file { "/etc/nginx/nginx.conf":
+  file { "${nginx_dir}/nginx.conf":
     ensure => file,
     source => 'puppet:///modules/nginx/nginx.conf',
     require => Package['nginx'],
     notify => Service['nginx'],
   }
 
-  file { "/etc/nginx/conf.d/default.conf":
+  file { "${nginx_dir}/conf.d/default.conf":
     ensure => file,
     source => 'puppet:///modules/nginx/default.conf',
     require => Package['nginx'],
