@@ -1,17 +1,20 @@
 class nginx {
   $nginx_dir = '/etc/nginx'
   $nginx_www = '/var/www'
+
   File {
     owner  => 'root',
     group  => 'root',
     mode   => '0644',
+    require => Package['nginx'],
+    notify => Service['nginx'],
   }
 
   package { 'nginx':
     ensure => present,
   }
 
-  file { "${nginx_www}":
+  file { $nginx_www:
     ensure => directory,
   }
 
@@ -27,15 +30,11 @@ class nginx {
   file { "${nginx_dir}/nginx.conf":
     ensure => file,
     source => 'puppet:///modules/nginx/nginx.conf',
-    require => Package['nginx'],
-    notify => Service['nginx'],
   }
 
   file { "${nginx_dir}/conf.d/default.conf":
     ensure => file,
     source => 'puppet:///modules/nginx/default.conf',
-    require => Package['nginx'],
-    notify => Service['nginx'],
   }
 
   service { 'nginx':
