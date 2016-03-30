@@ -72,4 +72,6 @@ node default {
   if $::virtual != 'Physical' {
     notify { "${capitalize($::virtual)}": }
   }
+
+  include aliases
 }
