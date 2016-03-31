@@ -26,7 +26,6 @@ class profile::wordpress {
 	class { '::wordpress': 	
 		wp_owner    => 'wordpress',
 		wp_group    => 'wordpress',
-		db_host => $::fqdn,
 		install_dir => '/var/www/wordpress',
 
 	}
