@@ -6,9 +6,10 @@ class nginx (
   $confdir = $nginx::params::confdir,
   $logdir = $nginx::params::logdir,
   $service = $nginx::params::service,
-  $root = undef,
+  $root = $nginx::params::root,
 ) inherits nginx::params {
-  if $root != undef{
+
+  if $root != undef {
     $docroot = $root
   }
 
