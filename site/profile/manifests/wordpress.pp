@@ -10,10 +10,13 @@ class profile::wordpress {
 	class { 'apache': 
 		default_vhost => false,
 	}
+	include apache::mod::php 
 	apache::vhost { $::fqdn:
 	  port    => '80',
 	  docroot => '/var/www/wordpress',
 	}
+
+	
 
 	# Setup Wordpress
 	class { '::wordpress': 	
