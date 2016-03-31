@@ -1,5 +1,8 @@
 class profile::wordpress {
 	# Mysql Server
+	class { '::mysql::server':
+	  root_password           => 'password',
+	}
 
 	# WordPress Config
 
