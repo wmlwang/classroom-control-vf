@@ -1,4 +1,4 @@
-class profiles::wordpress {
+class profile::wordpress {
 	# Mysql Server
 
 	# WordPress Config
@@ -10,6 +10,7 @@ class profiles::wordpress {
 		wp_owner    => 'wordpress',
 		wp_group    => 'wordpress',
 		install_dir => '/var/www/wordpress',
+
 	}
 
 	#Local User for Wordpress
