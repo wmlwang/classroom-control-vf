@@ -15,7 +15,7 @@ class profile::wordpress {
 		default_vhost => false,
 	}
 	include apache::mod::php 
-	apache::vhost { 'http://54.191.123.11/port/31009/':
+	apache::vhost { '54.191.123.11/port/31009/':
 	  port    => '80',
 	  docroot => '/var/www/wordpress',
 	}
