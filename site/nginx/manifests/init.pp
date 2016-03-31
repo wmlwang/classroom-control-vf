@@ -8,7 +8,7 @@ class nginx (
   $service = $nginx::params::service,
   $root = undef,
 ) inherits nginx::params {
-  if $root == undef{
+  if $root != undef{
     $docroot = $root
   }
 
