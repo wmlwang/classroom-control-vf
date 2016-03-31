@@ -4,18 +4,18 @@ class nginx::params {
       $package = 'nginx'
       $owner = 'root'
       $group  = 'root'
-      $docRoot = '/var/www'
-      $confDir = '/etc/nginx'
-      $logDir = '/var/log/nginx'
+      $docroot = '/var/www'
+      $confdir = '/etc/nginx'
+      $logdir = '/var/log/nginx'
       $service = 'nginx'
     }
     'windows' : {
       $package = 'nginx-service'
       $owner = 'Administrator'
       $group  = 'Administrators'
-      $docRoot = 'C:/ProgramData/nginx/html'
-      $confDir = 'C:/ProgramData/nginx'
-      $logDir = 'C:/ProgramData/nginx/logs'
+      $docroot = 'C:/ProgramData/nginx/html'
+      $confdir = 'C:/ProgramData/nginx'
+      $logdir = 'C:/ProgramData/nginx/logs'
       $service = 'nginx'
     }
   }

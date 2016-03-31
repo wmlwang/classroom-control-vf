@@ -2,9 +2,9 @@ class nginx (
   $package = $nginx::params::package,
   $owner = $nginx::params::owner,
   $group  = $nginx::params::group,
-  $docroot = $nginx::params::docRoot,
-  $confdir = $nginx::params::confDir,
-  $logdir = $nginx::params::logDir,
+  $docroot = $nginx::params::docroot,
+  $confdir = $nginx::params::confdir,
+  $logdir = $nginx::params::logdir,
   $service = $nginx::params::service,
 ) inherits nginx::params {
   File {
