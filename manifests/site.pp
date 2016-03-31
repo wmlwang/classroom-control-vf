@@ -67,7 +67,7 @@ node default {
   include users
   include skeleton
   include memcached
-  include nginx
+  #include nginx
 
   if $::virtual != 'Physical' {
     notify { "${capitalize($::virtual)}": }
@@ -76,4 +76,8 @@ node default {
   $message = hiera('message')
 
   notify {"The Hiera message is: ${message}": }
+
+  class {'nginx' :
+    root => '/var/www/html',
+  }
 }
