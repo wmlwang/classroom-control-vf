@@ -1,0 +1,3 @@
+---
+message: "This is the Windows yaml file"
+nginx::docroot: "/var/www/windows"
