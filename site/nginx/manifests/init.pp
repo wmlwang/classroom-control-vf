@@ -22,7 +22,7 @@ class nginx (
     }
   }
 
-  $docRoot = $root,
+  $docRoot = $root
 
   case $::osfamily {
     'redhat' : {
@@ -35,8 +35,6 @@ class nginx (
       $user = 'nobody'
     }
   }
-
-
 
   File {
     owner  => $owner,
