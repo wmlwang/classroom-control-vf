@@ -6,7 +6,7 @@ class nginx (
   $confDir = $nginx::params::confDir,
   $logDir = $nginx::params::logDir,
   $service = $nginx::params::service,
-) inherits $nginx::params {
+) inherits nginx::params {
   File {
     owner  => $owner,
     group  => $group,
