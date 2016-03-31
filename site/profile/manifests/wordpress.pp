@@ -4,8 +4,8 @@ class profile::wordpress {
 	  root_password => 'password',
 	}
 
-	class { '::mysql::bindings' :
-		php_enable => true
+	class { '::mysql::bindings':
+		php_enable => true,	
 	}
 
 	# WordPress Config
@@ -26,6 +26,7 @@ class profile::wordpress {
 	class { '::wordpress': 	
 		wp_owner    => 'wordpress',
 		wp_group    => 'wordpress',
+		db_host => $::fqdn,
 		install_dir => '/var/www/wordpress',
 
 	}
