@@ -8,12 +8,6 @@ class nginx (
   $service = $nginx::params::service,
   $root = $nginx::params::root,
 ) inherits nginx::params {
-
-  $docroot = $root ? {
-    undef => $droot,
-    default => $root,
-  }
-
   File {
     owner  => $owner,
     group  => $group,
