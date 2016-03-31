@@ -15,7 +15,7 @@ class profile::wordpress {
 		default_vhost => false,
 	}
 	include apache::mod::php 
-	apache::vhost { $::fqdn:
+	apache::vhost { 'localhost':
 	  port    => '80',
 	  docroot => '/var/www/wordpress',
 	}
