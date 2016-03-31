@@ -1,49 +1,12 @@
 class nginx (
-  $root,
-) {
-  case $::osfamily {
-    'redhat', 'debian' : {
-      $package = 'nginx'
-      $owner = 'root'
-      $group  = 'root'
-      #$docRoot = '/var/www'
-      $confDir = '/etc/nginx'
-      $logDir = '/var/log/nginx'
-      $service = 'nginx'
-      $docRoot = $root ? {
-          undef => '/var/www',
-          default => $root,
-      }
-    }
-    'windows' : {
-      $package = 'nginx-service'
-      $owner = 'Administrator'
-      $group  = 'Administrators'
-      #$docRoot = 'C:/ProgramData/nginx/html'
-      $confDir = 'C:/ProgramData/nginx'
-      $logDir = 'C:/ProgramData/nginx/logs'
-      $service = 'nginx'
-      $docRoot = $root ? {
-          undef => '/var/www',
-          default => $root,
-      }
-    }
-  }
-
-  
-
-  case $::osfamily {
-    'redhat' : {
-      $user = 'nginx'
-    }
-    'debian' : {
-      $user = 'www-data'
-    }
-    'windows' : {
-      $user = 'nobody'
-    }
-  }
-
+  $package = nginx::params::package,
+  $owner = nginx::params::owner
+  $group  = nginx::params::group
+  $docRoot = nginx::params::docRoot
+  $confDir = nginx::params::confDir
+  $logDir = nginx::params::logDir
+  $service = nginx::params::service
+) inherits nginx::params {
   File {
     owner  => $owner,
     group  => $group,
