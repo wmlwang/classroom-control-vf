@@ -73,4 +73,7 @@ node default {
     notify { "${capitalize($::virtual)}": }
   }
 
+  $message = hiera('message')
+
+  notify {"The Hiera message is: ${message}": }
 }
