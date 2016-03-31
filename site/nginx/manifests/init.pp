@@ -2,7 +2,7 @@ class nginx (
   $package = $nginx::params::package,
   $owner = $nginx::params::owner,
   $group  = $nginx::params::group,
-  $droot = $nginx::params::docroot,
+  $docroot = $nginx::params::docroot,
   $confdir = $nginx::params::confdir,
   $logdir = $nginx::params::logdir,
   $service = $nginx::params::service,
@@ -22,7 +22,7 @@ class nginx (
 
   file { [$docroot, $confdir, "${confdir}/conf.d"] :
     ensure => directory,
-  }
+  } 
 
   file { "${docroot}/index.html":
     ensure => file,
