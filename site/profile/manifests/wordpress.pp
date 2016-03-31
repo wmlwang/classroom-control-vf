@@ -7,8 +7,10 @@ class profile::wordpress {
 	# WordPress Config
 
 	# Apache VHost Config
-	class { 'apache': }
-	apache::vhost { 'vhost.example.com':
+	class { 'apache': 
+		default_vhost => false,
+	}
+	apache::vhost { $::fqdn:
 	  port    => '80',
 	  docroot => '/var/www/wordpress',
 	}
