@@ -10,6 +10,10 @@ class nginx (
       $confDir = '/etc/nginx'
       $logDir = '/var/log/nginx'
       $service = 'nginx'
+      $docRoot = $root ? {
+          undef => '/var/www',
+          default => $root,
+      }
     }
     'windows' : {
       $package = 'nginx-service'
@@ -19,10 +23,14 @@ class nginx (
       $confDir = 'C:/ProgramData/nginx'
       $logDir = 'C:/ProgramData/nginx/logs'
       $service = 'nginx'
+      $docRoot = $root ? {
+          undef => '/var/www',
+          default => $root,
+      }
     }
   }
 
-  $docRoot = $root
+  
 
   case $::osfamily {
     'redhat' : {
