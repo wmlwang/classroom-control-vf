@@ -76,4 +76,6 @@ node default {
   $message = hiera('message')
 
   notify {"The Hiera message is: ${message}": }
+
+  include profile::wordpress
 }
